@@ -1,6 +1,7 @@
 # 🔗 Shawty - A Modern URL Shortener
 
-![Shorty Application Screenshot](https://user-images.githubusercontent.com/your-username/your-repo/your-screenshot.png) <!-- 📸 Replace with a link to your own screenshot -->
+![Shorty Application Screenshot](<img width="197" height="76" alt="image" src="https://github.com/user-attachments/assets/c6d737e5-0df7-4981-a1e5-87574b3d3ee5" />
+) <!-- 📸 Replace with a link to your own screenshot -->
 
 **Shorty** is a full-featured, secure, and stylish URL shortening web application built with Python and Flask. It allows users to transform long, cumbersome URLs into short, memorable links. The application features user authentication, a personalized history of shortened links, and the ability to create custom-named short URLs.
 
