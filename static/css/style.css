@@ -1,0 +1,646 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+    --bg-color: #0a0a1a;
+    --surface-color: rgba(20, 20, 40, 0.7);
+    --primary-text-color: #f0f0f5;
+    --secondary-text-color: #a0a0b0;
+    --accent-color: #4f46e5;
+    --accent-hover-color: #6366f1;
+    --border-color: rgba(79, 70, 229, 0.3);
+    --glow-color: rgba(79, 70, 229, 0.5);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--bg-color) 0%, #1a1a3a 100%);
+    z-index: -1;
+}
+.background-animation::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glow-move 15s infinite alternate ease-in-out;
+    top: 10%;
+    left: 10%;
+}
+@keyframes glow-move {
+    to { top: 80%; left: 80%; transform: scale(1.5); }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--primary-text-color);
+    margin: 0;
+    padding-top: 80px; 
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(10, 10, 26, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* --- New, Improved Logo Styles --- */
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    fill: #a78bfa; /* A soft purple for the icon */
+    transition: filter 0.3s;
+}
+
+.logo:hover .logo-icon {
+    filter: drop-shadow(0 0 8px #6c3ff3); /* Add a glow on hover */
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 4px;
+    color: #d8b4fe; /* Main text color */
+}
+
+/* Creates the underline effect */
+.logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #6b31f2, #7f13ea); /* Gradient for the underline */
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease-out;
+}
+
+.logo:hover .logo-text::after {
+    transform: scaleX(1); /* Animate the underline on hover */
+}
+
+.nav-links a {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    margin-left: 25px;
+    transition: color 0.3s;
+}
+.nav-links a:hover {
+    color: var(--primary-text-color);
+}
+.nav-button {
+    background-color: var(--accent-color);
+    color: #fff !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+.nav-button:hover {
+    background-color: var(--accent-hover-color);
+    color: #fff !important;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 40px;
+    text-align: center;
+    background: var(--surface-color);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 50px rgba(0,0,0,0.2), 0 0 20px var(--glow-color);
+    backdrop-filter: blur(5px);
+}
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.subtitle {
+    color: var(--secondary-text-color);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+#url-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+}
+.input-wrapper {
+    position: relative;
+}
+.input-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-text-color);
+}
+.styled-input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: rgba(0,0,0,0.2);
+    color: var(--primary-text-color);
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+.styled-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+#url-form button {
+    padding: 15px 25px;
+    border: none;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+#url-form button:hover {
+    background-color: var(--accent-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+#result-container {
+    margin-top: 30px;
+    text-align: left;
+}
+.result-box {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+#short-url {
+    flex-grow: 1;
+    font-weight: 500;
+    color: var(--accent-hover-color);
+    text-decoration: none;
+    word-break: break-all;
+}
+#copy-button {
+    background: none;
+    border: none;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+#copy-button:hover {
+    color: var(--primary-text-color);
+}
+.hidden { display: none; }
+
+.features-section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.feature-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px var(--glow-color);
+}
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+.feature-card h3 {
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-size: 1.25rem;
+}
+.feature-card p {
+    color: var(--secondary-text-color);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+/*
+   ADD THIS CSS TO THE BOTTOM OF YOUR EXISTING style.css FILE
+*/
+
+/* --- Styles for Login/Signup Pages --- */
+
+.auth-container {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 40px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 50px rgba(0,0,0,0.2), 0 0 20px var(--glow-color);
+    position: relative; /* Needed for z-index to work */
+    z-index: 1;
+}
+
+.auth-container h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Re-using the .styled-input class for consistency */
+.auth-form .styled-input {
+    padding-left: 15px; /* No icon, so less padding */
+}
+
+.auth-form button {
+    padding: 15px 25px;
+    border: none;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.auth-form button:hover {
+    background-color: var(--accent-hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+.auth-switch {
+    margin-top: 25px;
+    color: var(--secondary-text-color);
+}
+
+.auth-switch a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.auth-switch a:hover {
+    color: var(--accent-hover-color);
+}
+
+/* --- Styles for Flash Messages (e.g., "Invalid password") --- */
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background-color: rgba(220, 38, 38, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(220, 38, 38, 0.4);
+}
+
+.alert-success {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+/* --- NEW History Section Styles --- */
+.history-section {
+    max-width: 960px;
+    margin: 60px auto;
+    padding: 20px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+}
+.history-section h2 {
+    text-align: center;
+    margin-top: 0;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fff;
+}
+#history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.history-item {
+    display: block; /* Changed from flex */
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease-in-out;
+}
+.history-item:last-child {
+    border-bottom: none;
+}
+.history-item:hover {
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle hover effect */
+}
+.history-long-url {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 8px; /* Space between the two lines */
+}
+.history-short-url {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+.history-short-url a {
+    color: var(--accent-hover-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+.history-copy-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    transition: color 0.3s;
+}
+.history-copy-btn:hover {
+    color: #fff;
+}
+.history-item-empty {
+    text-align: center;
+    padding: 40px;
+    color: var(--secondary-text-color);
+}
+/* --- Styles for History Action Buttons --- */
+.history-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.history-delete-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    transition: color 0.3s;
+}
+
+.history-delete-btn:hover {
+    color: #ef4444; /* A red color for danger/delete action */
+}
+/* --- Custom Confirmation Modal Styles --- */
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.confirm-overlay.visible {
+    display: flex; /* Make it visible */
+}
+
+.confirm-box {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 20px var(--glow-color);
+    text-align: center;
+    animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.confirm-title {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+#confirm-message {
+    color: var(--secondary-text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirm-btn-primary,
+.confirm-btn-secondary {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.confirm-btn-primary {
+    background-color: #ef4444; /* Red for destructive action */
+    color: white;
+}
+.confirm-btn-primary:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+}
+
+.confirm-btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-text-color);
+    border: 1px solid var(--border-color);
+}
+.confirm-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+/* --- Custom Confirmation Modal Styles --- */
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.confirm-overlay.visible {
+    display: flex; /* Make it visible */
+}
+
+.confirm-box {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 20px var(--glow-color);
+    text-align: center;
+    animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.confirm-title {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+#confirm-message {
+    color: var(--secondary-text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirm-btn-primary,
+.confirm-btn-secondary {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.confirm-btn-primary {
+    background-color: #ef4444; /* Red for destructive action */
+    color: white;
+}
+.confirm-btn-primary:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+}
+
+.confirm-btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-text-color);
+    border: 1px solid var(--border-color);
+}
+.confirm-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+/* --- Style for the Back Link on Auth Pages --- */
+.back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2rem;
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.back-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-text-color);
+}

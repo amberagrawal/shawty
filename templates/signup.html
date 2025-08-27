@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Shorty</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="auth-container">
+        <a href="{{ url_for('index') }}" class="back-link" title="Back to Home"><i class="fas fa-arrow-left"></i></a>
+
+        <h2>Create an Account</h2>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('signup') }}" class="auth-form">
+            <div class="input-wrapper">
+                <input type="text" name="username" class="styled-input" placeholder="Username" required>
+            </div>
+            <div class="input-wrapper">
+                <input type="password" name="password" class="styled-input" placeholder="Password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        
+        <p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+    </div>
+</body>
+</html>
